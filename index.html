@@ -1,0 +1,141 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<style>
+  .one {
+    color: yellowgreen;
+    text-decoration: none;
+  }
+
+  .two {
+    text-decoration: line-through;
+    color: tomato;
+  }
+
+  .canvas {
+    width: 300px;
+    height: 300px;
+    margin-top: 20px;
+    background: #dddddd;
+  }
+</style>
+
+<body>
+
+  <div id="app">
+
+
+    <!-- bind -->
+    <h1>
+      <ol start="1">
+        <li>Data Binding</li>
+      </ol>
+    </h1>
+
+    <!-- we can use v-bind:class as :class only to make it short -->
+    <h4>{{title}}</h4>
+    <p>{{greet("morning")}}</p>
+    <a v-bind:href="url">Youtube</a>
+    <div :class="classes">hello there</div>
+    <input type="text" :value="name" />
+    </br></br>
+
+    <!-- events  -->
+
+    <h1>
+      <ol start="2">
+        <li>Events</li>
+      </ol>
+    </h1>
+
+    <!-- single click events -->
+    <h2>
+      <ul>
+        <li>Single click event</li>
+      </ul>
+    </h2>
+    <p> I earn {{wages}} $ per hour</p>
+    <button v-on:click="changeWages(1)"> Increase wages by $1</button>
+    <button v-on:click="changeWages(-1)"> Decrease wages by $1</button>
+
+    <!-- Double click events -->
+    <h2>
+      <ul>
+        <li>Double click event</li>
+      </ul>
+    </h2>
+    <p> I earn {{wages}} $ per hour</p>
+    <button v-on:dblclick="changeWages(5)"> Increase wages by $5</button>
+    <button v-on:dblclick="changeWages(-5)"> Decrease wages by $5</button>
+
+    <br><br>
+    <!-- Event Object -->
+    <h2>
+      <ul>
+        <li>Event object </li>
+      </ul>
+    </h2>
+    <button @click=" logEvent "> log event info</button>
+    <div @mousemove="logCoords" class="canvas">
+      {{coords.x}}, {{coords.y}}
+    </div>
+
+    <br><br>
+    <!-- Keyboard Event Object -->
+    <h2>
+      <ul>
+        <li> Keyboard Event </li>
+      </ul>
+    </h2>
+    <p> Name is <b> {{name}} </b> </p>
+    <input type="text" v-model="name">
+    <input type="text" @keyup="updateName">
+    <input type="text" @keypress="updateName">
+
+    <br><br>
+    <!-- Modifiers -->
+    <h2>
+      <ul>
+        <li> Modifiers </li>
+      </ul>
+    </h2>
+    <button @click.alt="modifierLogMessage">alt-click me</button>
+    <button @click.shift="modifierLogMessage">shift-click me</button>
+    <a href="https://google.com" @click.prevent="modifierLogMessage">Google</a>
+
+    <br><br>
+    <!-- conditional output with v-if -->
+    <h1>
+      <ol start="3">
+        <li>conditional output with v-if</li>
+      </ol>
+    </h1>
+    <h3 v-if="showName"> {{writtenName}} </h3>
+    <input type="text" v-model="writtenName">
+    <button @click="changeShowName">show name</button>
+    <button @click="changeShowNameFalse">hide name</button>
+
+    <h1>
+      <ol start="4">
+        <li>Looping with v-for</li>
+      </ol>
+    </h1>
+    <h2>Family are: </h2>
+    <li v-for="family in nameList">
+      <p> {{family.name}} </p>
+    </li>
+    <ol>
+      <li v-for="item in items">
+        {{item}}
+      </li>
+    </ol>
+  </div>
+  <script src="app.js"></script>
+</body>
+
+</html>
